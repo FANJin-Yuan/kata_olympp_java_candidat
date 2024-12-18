@@ -1,16 +1,29 @@
 package fr.olympp.kata.repository;
 
-import fr.olympp.kata.models.Clan;
+import fr.olympp.kata.repository.entities.Clan;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface ClanRepository {
+@Repository
+@RequiredArgsConstructor
+public class ClanRepository {
+    private final ClanJpaRepository clanJpaRepository;
 
-    public void addClan(Clan clan);
+    public Clan findClanByName(String clanName) {
+        return clanJpaRepository.findByName(clanName);
+    }
 
-    public Clan updateClan(Clan clan);
+    public List<Clan> findClans() {
+        return clanJpaRepository.findAll();
+    }
 
-    public Clan getClan(String name);
+    public void saveClan(Clan clan) {
+        clanJpaRepository.save(clan);
+    }
 
-    List<Clan> getClans();
+    public void saveClans(List<Clan> clans) {
+        clanJpaRepository.saveAll(clans);
+    }
 }

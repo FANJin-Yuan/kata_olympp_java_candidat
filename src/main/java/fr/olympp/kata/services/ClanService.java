@@ -1,7 +1,7 @@
 package fr.olympp.kata.services;
 
-import fr.olympp.kata.models.Army;
-import fr.olympp.kata.models.Clan;
+import fr.olympp.kata.repository.entities.Army;
+import fr.olympp.kata.repository.entities.Clan;
 
 import java.util.List;
 
